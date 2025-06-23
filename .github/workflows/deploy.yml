@@ -62,7 +62,9 @@ jobs:
       - name: Update kubeconfig
         run: |
           aws eks update-kubeconfig --name $CLUSTER --region ${{ secrets.AWS_REGION }}
-
+      - name: Ensure namespace exists
+        run: |
+          kubectl get namespace $ENV || kubectl create namespace $ENV
       - name: Deploy to EKS
         run: |
           ECR_URI=$(aws ecr describe-repositories --repository-names $ECR_REPO --query "repositories[0].repositoryUri" --output text)
