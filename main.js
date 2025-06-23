@@ -10,6 +10,10 @@ app.get('/test', (req, res) => {
   res.json({message: "Hey, Docker is working from test route !"});
 });
 
+app.get('/test2', (req, res) => {
+  res.json({message: "Hey, Docker is working from test2 route !"});
+});
+
 app.get('/health', (req, res) => {
   res.json({status: true, message: "Everything working perfectly v2✌️!"});
 });
